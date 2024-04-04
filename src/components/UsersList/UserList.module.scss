@@ -1,0 +1,17 @@
+.userList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-left: 0;
+  padding: 0;
+  list-style: none;
+
+  margin-top: 70px;
+  margin-bottom: 0;
+
+  .loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+}
