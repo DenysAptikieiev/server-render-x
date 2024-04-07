@@ -6,8 +6,3 @@ export const METHOD = {
   PATCH: 'PATCH',
   DELETE: 'DELETE',
 };
-
-export const initHeaders = new Headers({
-  'Content-Type': 'application/json',
-  Accept: 'application/json',
-});

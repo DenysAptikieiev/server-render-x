@@ -1,12 +1,11 @@
-import { API_DOMAIN, initHeaders, METHOD } from './constans';
+import { API_DOMAIN, METHOD } from './constans';
 
 export const request = async (endpoint, options) => {
-  const headers = options?.headers ?? initHeaders;
-
   const init = {
     body: options?.body,
     method: options?.method || METHOD.GET,
-    headers,
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
   };
   try {
     const response = await fetch(`${API_DOMAIN}${endpoint}`, init);

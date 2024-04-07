@@ -3,7 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  mode: 'development' === process.env.NODE_ENV ? 'development' : 'production',
+
+  // entry files
+  entry:
+    'development' === process.env.NODE_ENV
+      ? [
+          './src/index.dev.js', // in development
+        ]
+      : [
+          './src/index.prod.js', // in production
+        ],
+
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),

@@ -1,47 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './scss/index.scss';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useLoaderData } from 'react-router-dom';
 import Root from './routes/Root';
 import ErrorPage from './error-page';
 import UserPosts from './routes/UserPosts';
 import UserAlbums from './routes/UserAlbums';
 import { MetaTags } from './HOC/MetaTags';
 
-const router = createBrowserRouter([
+export const router = [
   {
     path: '/',
-    Component: () => (
+    Component: () => {
+      let data = useLoaderData();
+      return (
         <>
           <MetaTags />
-          <Root />
+          <Root data={data} />
         </>
-    ),
+      );
+    },
     errorElement: <ErrorPage />,
   },
   {
     path: '/user-posts/:userId',
     Component: () => (
-        <>
-          <MetaTags />
-          <UserPosts />
-        </>
+      <>
+        <MetaTags />
+        <UserPosts />
+      </>
     ),
   },
   {
     path: '/user-albums/:userId',
     Component: () => (
-        <>
-          <MetaTags />
-          <UserAlbums />
-        </>
+      <>
+        <MetaTags />
+        <UserAlbums />
+      </>
     ),
   },
-]);
+];
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    // <React.StrictMode>
-    <RouterProvider router={router} />
-    // </React.StrictMode>
-);
+ReactDOM.createRoot(document?.getElementById('root'), <RouterProvider router={createBrowserRouter(router)} />);
