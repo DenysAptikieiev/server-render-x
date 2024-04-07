@@ -42,4 +42,4 @@ export const router = [
   },
 ];
 
-ReactDOM.createRoot(document?.getElementById('root'), <RouterProvider router={createBrowserRouter(router)} />);
+ReactDOM.hydrateRoot(document?.getElementById('root'), <RouterProvider router={createBrowserRouter(router)} />);
